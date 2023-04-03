@@ -1,0 +1,51 @@
+body {
+  background-color: antiquewhite;
+  margin: 0px;
+}
+
+h1,
+h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lists {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+
+.addtolist {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.monday {
+  background-color: azure;
+}
+
+.tuesday {
+  background-color: cadetblue;
+}
+
+.wednesday {
+  background-color: bisque;
+}
+
+.thursday {
+  background-color: cornsilk;
+}
+
+.friday {
+  background-color: darksalmon;
+}
+
+.weekday {
+  height: 28rem;
+}
+
+input,
+button {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
