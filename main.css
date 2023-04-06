@@ -14,7 +14,7 @@ h3 {
   text-align: center;
 }
 
-.addtolist {
+.addArea {
   text-align: center;
   padding-top: 3rem;
   padding-bottom: 5rem;
@@ -48,4 +48,33 @@ input,
 button {
   font-size: 1rem;
   padding: 0.5rem;
+}
+
+.toDoItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+}
+
+.toDoitems {
+  display: flex;
+  flex-direction: column;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  justify-content: space-around;
+}
+
+.checkmark {
+  width: 1em;
+}
+
+.deletemark {
+  width: 1em;
 }

@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" />
+    <script src="app.js" defer></script>
     <title>TO DO</title>
   </head>
   <body>
     <main>
-      <div class="addtolist">
+      <div class="addArea">
         <h1>TO DO</h1>
-        <input type="text" placeholder="What's on the agenda?" />
+        <input id="addToList" type="text" placeholder="What's on the agenda?" />
         <button>Monday</button>
-        <button>add</button>
+        <button id="addBtn">add</button>
       </div>
       <div class="lists">
         <div class="weekday monday">
           <h3>MONDAY</h3>
+          <div class="toDoItems"></div>
         </div>
         <div class="weekday tuesday">
           <h3>TUESDAY</h3>
