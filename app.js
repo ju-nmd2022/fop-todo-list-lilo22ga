@@ -9,8 +9,14 @@ const addElement = document.getElementById("addToList");
 const addButton = document.getElementById("addBtn");
 const toDoMonday = document.querySelector(".toDoItem");
 const toDoElements = document.querySelector(".toDoItems");
+const weekdayButton = document.getElementById("weekdayBtn");
 
 let toDos = [];
+
+const getToDoList = localStorage.getItem("toDos");
+if (getToDoList) {
+  toDos = JSON.parse(getToDoList);
+}
 
 //3
 const addIcons = (parentDiv) => {
@@ -57,6 +63,8 @@ const addToDos = () => {
     const toDo = addElement.value;
     toDos.push(toDo);
     console.log(toDo);
+
+    localStorage.setItem("toDos", JSON.stringify(toDos));
     updateList();
   }
 };
@@ -76,10 +84,26 @@ const removeFromList = (event) => {
     toDoItem.remove();
   }
 
-  //doesn't work properly??
   const listIndex = toDos.indexOf(toDoItem.innerHTML);
   toDos.splice(listIndex, 1);
   updateList();
 };
 
+const changeWeekday = () => {
+  if (weekdayButton.innerHTML === "Monday") {
+    weekdayButton.innerHTML = "Tuesday";
+  } else if (weekdayButton.innerHTML === "Tuesday") {
+    weekdayButton.innerHTML = "Wednesday";
+  } else if (weekdayButton.innerHTML === "Wednesday") {
+    weekdayButton.innerHTML = "Thursday";
+  } else if (weekdayButton.innerHTML === "Thursday") {
+    weekdayButton.innerHTML = "Friday";
+  } else if (weekdayButton.innerHTML === "Friday") {
+    weekdayButton.innerHTML = "Monday";
+  }
+};
+
 addButton.addEventListener("click", addToDos);
+weekdayButton.addEventListener("click", changeWeekday);
+
+window.addEventListener("load", updateList);
