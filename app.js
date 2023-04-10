@@ -1,5 +1,3 @@
-//create array for weekdays later?
-
 const mondayElement = document.querySelector(".monday");
 const tuesdayElement = document.querySelector(".tuesday");
 const wednesdayElement = document.querySelector(".wednesday");
@@ -19,7 +17,7 @@ if (getToDoList) {
 }
 
 //3
-const addIcons = (parentDiv) => {
+const addIcons = (parentDiv, toDo) => {
   const iconsDiv = document.createElement("div");
   iconsDiv.classList.add("icons");
 
@@ -37,56 +35,56 @@ const addIcons = (parentDiv) => {
   iconsDiv.appendChild(deletemark);
   parentDiv.appendChild(iconsDiv);
 
-  checkmark.addEventListener("click", markAsDone);
-  deletemark.addEventListener("click", removeFromList);
+  checkmark.addEventListener("click", () => markAsDone(toDo));
+  deletemark.addEventListener("click", () => removeFromList(toDo));
 };
 
 //2
-const updateList = () => {
+const updateHTMLAndSaveList = () => {
+  localStorage.setItem("toDos", JSON.stringify(toDos));
   toDoElements.innerHTML = "";
   for (let toDo of toDos) {
     const parentDiv = document.createElement("div");
     parentDiv.classList.add("toDoItem");
 
-    const newToDo = document.createElement("div");
-    newToDo.innerHTML = toDo;
+    const toDoTextDiv = document.createElement("div");
+    toDoTextDiv.innerHTML = toDo.text;
 
-    parentDiv.appendChild(newToDo);
-    addIcons(parentDiv);
+    parentDiv.appendChild(toDoTextDiv);
+    addIcons(parentDiv, toDo);
     toDoElements.appendChild(parentDiv);
+
+    if (toDo.completed === true) {
+      toDoTextDiv.style.textDecoration = "line-through";
+    }
   }
 };
 
 //1
 const addToDos = () => {
   if (addElement.value.length > null) {
-    const toDo = addElement.value;
+    const text = addElement.value;
+    const completed = false;
+    const id = Math.floor(Math.random() * 10000);
+    const toDo = { text, completed, id };
     toDos.push(toDo);
-    console.log(toDo);
+    console.log(toDo.text);
 
-    localStorage.setItem("toDos", JSON.stringify(toDos));
-    updateList();
+    updateHTMLAndSaveList();
   }
 };
 
-const markAsDone = (event) => {
-  const checkmark = event.target;
-  const toDoItem = checkmark.parentElement.parentElement;
-  if (toDoItem) {
-    toDoItem.style.textDecoration = "line-through";
-  }
+const markAsDone = (toDo) => {
+  toDo.completed = true;
+  updateHTMLAndSaveList();
 };
 
-const removeFromList = (event) => {
-  const deletemark = event.target;
-  const toDoItem = deletemark.parentElement.parentElement;
-  if (toDoItem) {
-    toDoItem.remove();
-  }
-
-  const listIndex = toDos.indexOf(toDoItem.innerHTML);
+//inspo from Peter Heinum
+const removeFromList = (toDo) => {
+  const listIndex = toDos.findIndex((item) => item.id === toDo.id);
   toDos.splice(listIndex, 1);
-  updateList();
+
+  updateHTMLAndSaveList();
 };
 
 const changeWeekday = () => {
@@ -106,4 +104,4 @@ const changeWeekday = () => {
 addButton.addEventListener("click", addToDos);
 weekdayButton.addEventListener("click", changeWeekday);
 
-window.addEventListener("load", updateList);
+window.addEventListener("load", updateHTMLAndSaveList);
