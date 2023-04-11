@@ -1,13 +1,7 @@
-const mondayElement = document.querySelector(".monday");
-const tuesdayElement = document.querySelector(".tuesday");
-const wednesdayElement = document.querySelector(".wednesday");
-const thursdayElement = document.querySelector(".thursday");
-const fridayElement = document.querySelector(".friday");
 const addElement = document.getElementById("addToList");
 const addButton = document.getElementById("addBtn");
-const toDoMonday = document.querySelector(".toDoItem");
-const toDoElements = document.querySelector(".toDoItems");
 const weekdayButton = document.getElementById("weekdayBtn");
+const toDoElements = document.querySelector(".toDoItems");
 
 let toDos = [];
 
@@ -40,6 +34,7 @@ const addIcons = (parentDiv, toDo) => {
 };
 
 //2
+//the following code was created with inspiration from Peter Heinum
 const updateHTMLAndSaveList = () => {
   localStorage.setItem("toDos", JSON.stringify(toDos));
   toDoElements.innerHTML = "";
@@ -66,7 +61,8 @@ const addToDos = () => {
     const text = addElement.value;
     const completed = false;
     const id = Math.floor(Math.random() * 10000);
-    const toDo = { text, completed, id };
+    const weekday = weekdayButton.innerHTML;
+    const toDo = { text, completed, id, weekday };
     toDos.push(toDo);
     console.log(toDo.text);
 
@@ -79,7 +75,7 @@ const markAsDone = (toDo) => {
   updateHTMLAndSaveList();
 };
 
-//inspo from Peter Heinum
+//the following code was created with inspiration from Peter Heinum
 const removeFromList = (toDo) => {
   const listIndex = toDos.findIndex((item) => item.id === toDo.id);
   toDos.splice(listIndex, 1);
