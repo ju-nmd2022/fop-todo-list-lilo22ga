@@ -34,7 +34,7 @@ const addIcons = (parentDiv, toDo) => {
 };
 
 //2
-//the following code was created with inspiration from Peter Heinum
+//the following function was created with inspiration from Peter Heinum
 const updateHTMLAndSaveList = () => {
   localStorage.setItem("toDos", JSON.stringify(toDos));
   toDoElements.innerHTML = "";
@@ -75,7 +75,7 @@ const markAsDone = (toDo) => {
   updateHTMLAndSaveList();
 };
 
-//the following code was created with inspiration from Peter Heinum
+//the following function was created with inspiration from Peter Heinum
 const removeFromList = (toDo) => {
   const listIndex = toDos.findIndex((item) => item.id === toDo.id);
   toDos.splice(listIndex, 1);
