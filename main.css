@@ -1,0 +1,78 @@
+body {
+  background-color: antiquewhite;
+  margin: 0px;
+}
+
+h1,
+h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lists {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  height: 25em;
+}
+
+.addArea {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.monday {
+  background-color: azure;
+}
+
+.tuesday {
+  background-color: cadetblue;
+}
+
+.wednesday {
+  background-color: bisque;
+}
+
+.thursday {
+  background-color: cornsilk;
+}
+
+.friday {
+  background-color: darksalmon;
+}
+
+input,
+button {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.toDoItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+}
+
+.toDoitems {
+  display: flex;
+  flex-direction: column;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  justify-content: space-around;
+}
+
+.checkmark {
+  width: 1em;
+}
+
+.deletemark {
+  width: 1em;
+  height: 1em;
+}
